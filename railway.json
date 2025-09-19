@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd adresponse-frontend && npm install --legacy-peer-deps && npm run build && cd .. && cp -r adresponse-frontend/dist/* src/static/ && python src/main.py",
+    "startCommand": "./build.sh && python src/main.py",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",
