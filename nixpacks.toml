@@ -1,0 +1,17 @@
+[phases.setup]
+nixPkgs = ["nodejs", "python3", "pip"]
+
+[phases.install]
+cmds = [
+    "cd adresponse-frontend && npm install --legacy-peer-deps",
+    "pip install -r requirements.txt"
+]
+
+[phases.build]
+cmds = [
+    "cd adresponse-frontend && npm run build",
+    "cp -r adresponse-frontend/dist/* src/static/"
+]
+
+[start]
+cmd = "python src/main.py"
