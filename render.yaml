@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: adresponse-app
+    env: python
+    buildCommand: |
+      cd adresponse-frontend && npm install && npm run build && cd .. && 
+      cp -r adresponse-frontend/dist/* src/static/ && 
+      pip install -r requirements.txt
+    startCommand: python src/main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
